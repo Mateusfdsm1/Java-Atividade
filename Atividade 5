@@ -1,0 +1,38 @@
+package com.mycompany.exercicios1;
+
+import javax.swing.JOptionPane;
+public class Exercicios1 {
+
+    public static void main(String[] args) {
+        double num = 1, media = 0, cont = 0, soma = 0, n = 1, percentN, percentP;
+        int positivo = 0, negativo = 0;
+       
+        JOptionPane.showMessageDialog(null, "Vá digitando os valores e quando quiser que pare, digite '0'.");
+        
+        while (n != 0){
+            
+            num = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor desejado: "));
+            n = num;
+            soma = soma + num;  
+            cont++;
+            
+            if (num < 0){
+                negativo++;
+            } else {
+                positivo++;
+            }            
+        }
+        
+        positivo = positivo - 1;
+        cont = cont - 1;
+        
+        media = soma/(cont);
+        percentN = (negativo/cont)*100;
+        percentP = ((positivo)/cont)*100;  
+        JOptionPane.showMessageDialog(null, "A média aritmética dos valores digitados é: "+media);
+        JOptionPane.showMessageDialog(null, "A quantidade de valores positivos digitados é: "+positivo);
+        JOptionPane.showMessageDialog(null, "A quantidade de valores negativos digitados é: "+negativo);
+        JOptionPane.showMessageDialog(null, "A percentagem de valores negativos digitados é: "+percentN+"%");
+        JOptionPane.showMessageDialog(null, "A percentagem de valores positivos digitados é: "+percentP+"%");
+         }        
+    }
