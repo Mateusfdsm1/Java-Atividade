@@ -1,0 +1,22 @@
+   import javax.swing.JOptionPane;
+    public class Exercicios1 {
+    public static void main(String[] args) {          
+          double altura, maior =0, menor= 1000;
+          int i;
+          
+          for(i = 1; i<=3; i++){
+              altura = Double.parseDouble(JOptionPane.showInputDialog("Digite sua altura")); 
+              
+              if(altura > maior){
+                  maior = altura;
+              }
+              if(altura < menor){
+                  menor = altura;
+              }
+          }
+          System.out.println(i);
+          JOptionPane.showMessageDialog(null, "A maior altura é: " + maior);
+          JOptionPane.showMessageDialog(null, "A menor altura é: " + menor);
+        }       
+    } 
+    
