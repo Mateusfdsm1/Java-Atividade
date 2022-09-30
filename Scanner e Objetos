@@ -1,0 +1,90 @@
+public class Questao2 extends Pessoa{
+    public static void main(String[] args) {
+        
+        //Objetos e scanner
+        Scanner ler = new Scanner(System.in);
+        Pessoa p[] = new Pessoa[100];
+        
+        //Variáveis
+        int menu, i, qtdP = 0, listaCPF, listaT, c1 = 1, pos, excluir;
+        String listaP;
+        
+        do{
+            
+            System.out.println("-------------------------------------------------------------------------------------------------------");
+            System.out.println("~ Menu da Agenda: \n1 - Cadastrar Pessoa.\n2 - Listar Pessoa.\n3 - Alterar Pessoa.\n4 - Excluir Pessoa.\n5 - Sair.");
+            System.out.println("\nEscolha uma das opcoes acima: ");
+            menu = ler.nextInt();
+            
+            switch (menu){
+                
+                case 1: //Cadastrar Pessoa
+                    System.out.println("Quantas pessoas voce deseja cadastrar? Limite: 100 pessoas");
+                    qtdP = ler.nextInt();
+                    for(i = 0; i < qtdP;  i++){
+                        p[i] = new Pessoa();
+                        System.out.println("\nDigite o nome da pessoa que deve ser cadastrado(a): ");
+                        listaP = ler.next();                
+                        p[i].nome = listaP;
+                        System.out.println("Digite o CPF dessa pessoa: ");
+                        listaCPF = ler.nextInt();
+                        p[i].cpf = listaCPF;
+                        System.out.println("Digite o telefone dessa pessoa: ");
+                        listaT = ler.nextInt();
+                        p[i].telefone = listaT;      
+                        System.out.println("Cadastrado(a) com sucesso!");     
+                    }
+                    break;
+             
+                case 2: //Listar Pessoa    
+                    System.out.println("\nLista de Pessoas Cadastradas na agenda: \n");
+                    System.out.println("--------------------------------");
+                     
+                    for(i = 0; i < qtdP;  i++){
+                        System.out.println("Nome : "+p[i].getNome());
+                        System.out.println("CPF: "+p[i].getCpf());
+                        System.out.println("Telefone: "+p[i].getTelefone());
+                        System.out.println("--------------------------------");
+                        c1++;
+                    }
+                    break;
+                
+                case 3: //Alterar pessoa
+                    System.out.println("Digite a posicao [0 - 99] da pessoa que deseja ALTERAR os dados: ");
+                    pos = ler.nextInt();
+                    
+                    for(i = 0; i < qtdP; i++){
+                        if(i == pos){
+                            System.out.println("Digite o novo nome: ");
+                            listaP = ler.next();
+                            p[i].nome = listaP;
+                            System.out.println("Digite o novo CPF: ");
+                            listaCPF = ler.nextInt();
+                            p[i].cpf = listaCPF;
+                            System.out.println("Digite o novo telefone: ");
+                            listaT = ler.nextInt();
+                            p[i].telefone = listaT;
+                        } else if (i != pos && i > qtdP){
+                            System.out.println("A posicao digitada nao tem cadastro.");
+                        }
+                    }
+                    break;
+                    
+                case 4: //Excluir Pessoa   
+                    System.out.println("Digite a posicao [0 - 99] da pessoa que deseja EXCLUIR os dados: ");
+                    excluir = ler.nextInt();
+                    
+                    for(i = 0; i < qtdP; i++){
+                        if(i == excluir){ 
+                            p[i].nome = "Desconhecido";      
+                            p[i].cpf = 0;
+                            p[i].telefone = 0;
+                        } else if (i != excluir && i > qtdP){
+                            System.out.println("A posicao digitada nao tem cadastro.");
+                        }
+                    }
+                    break;       
+            } 
+        } while(menu != 5);
+    }
+}
