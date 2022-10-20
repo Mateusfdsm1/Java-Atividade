@@ -1,0 +1,38 @@
+//  O sistema responsável por capturar a velocidade é baseado em sensores eletromagnéticos, 
+//instalados no chão conectado à câmera, responsável por fazer o registro do dia, hora, placa do carro, 
+//velocidade, e local da infração. Com base nesses atributos, faça um programa capaz de ler velocidades de carros, 
+//e aplicar multas caso o motorista transite em determinada avenida com velocidade acima de 60km/h, considerando os intervalos seguintes:
+//	acima de 10km/h o infrator deve pagar R$50,00;
+//	acima de 11km/h e até 30km/h a mais, o infrator deve pagar R$100,00;
+//	acima de 31km/h o infrator deve pagar R$300,00.
+
+package questão.velocidade;
+import javax.swing.JOptionPane;
+public class QuestãoVelocidade {
+
+    public static void main(String[] args) {
+        double velocidade, multa = 0;
+        velocidade = Double.parseDouble(JOptionPane.showInputDialog("Digite a velocidade que o carro estava trafegando "));
+        if (velocidade <= 70 && velocidade > 60){
+            multa = 50;
+            JOptionPane.showMessageDialog(null, """
+                                                O motorista ultrapassou o limite da via! (60km/h) 
+                                                Multa de R$""" + multa + ",00 aplicada! " );
+        }
+        else if (velocidade <= 90 && velocidade > 71){
+            multa = 100;
+            JOptionPane.showMessageDialog(null, """
+                                                O motorista ultrapassou o limite da via! (60km/h) 
+                                                Multa de R$""" + multa + ",00 aplicada! " );
+        }
+        else if (velocidade >= 91){
+            multa = 300;
+            JOptionPane.showMessageDialog(null, """
+                                                O motorista ultrapassou o limite da via! (60km/h) 
+                                                Multa de R$""" + multa + ",00 aplicada! " );
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "O motorista está dentro da velocidade permitida");
+        }
+    }
+}
